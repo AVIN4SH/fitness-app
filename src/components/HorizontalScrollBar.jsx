@@ -1,19 +1,55 @@
-import React from "react";
+import React, { useRef } from "react";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import BodyPartCard from "./BodyPartCard";
 
-function HorizontalScrollBar({ bodyParts }) {
+function HorizontalScrollBar({ data, bodyPart, setBodyPart }) {
+  const scrollContainerRef = useRef(null);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -300,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: 300,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    // ! from 1:00:00
-
-    <div>
-      <div className="my-4 p-4">
-        <div className="stats ">
-          <div className="stat place-items-center">
-            <div className="stat-title">Downloads</div>
-            <div className="stat-value">31K</div>
-            <div className="stat-desc">From January 1st to February 1st</div>
+    <div className="flex items-center my-8">
+      <button onClick={scrollLeft} className="p-2">
+        <FaArrowLeft className="mx-1" size={24} />
+      </button>
+      <div
+        className="flex overflow-x-auto scrollbar-hide space-x-4"
+        ref={scrollContainerRef}
+      >
+        {data.map((item) => (
+          <div
+            key={item}
+            id={item}
+            title={item}
+            className="flex-shrink-0 w-full sm:w-auto"
+          >
+            <BodyPartCard
+              item={item}
+              bodyPart={bodyPart}
+              setBodyPart={setBodyPart}
+            />
           </div>
-        </div>
+        ))}
       </div>
+      <button onClick={scrollRight} className="p-2">
+        <FaArrowRight className="mx-1" size={24} />
+      </button>
     </div>
   );
 }

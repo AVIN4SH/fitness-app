@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { fetchData, exerciseOptions } from "../utils/fetchData";
 import HorizontalScrollBar from "./HorizontalScrollBar";
 
-function SearchExcercise() {
+function SearchExcercise({ setExercises, bodyPart, setBodyPart }) {
   const [search, setSearch] = useState("");
-  const [exercises, setExercises] = useState([]);
+
   const [bodyParts, setBodyParts] = useState([]);
 
   const URL = "https://exercisedb.p.rapidapi.com";
@@ -17,7 +17,7 @@ function SearchExcercise() {
         URL + BODYPARTPATH,
         exerciseOptions
       );
-      setExercises(["all", ...bodyPartsData]);
+      setBodyParts(["all", ...bodyPartsData]);
     };
     fetchExercisesData();
   }, []);
@@ -26,10 +26,12 @@ function SearchExcercise() {
     if (search) {
       const exerciseData = await fetchData(URL + EXERCISEPATH, exerciseOptions);
       const searchedExercises = exerciseData.filter((exercise) => {
-        exercise.name.toLowerCase().includes(search) ||
+        return (
+          exercise.name.toLowerCase().includes(search) ||
           exercise.target.toLowerCase().includes(search) ||
           exercise.equipment.toLowerCase().includes(search) ||
-          exercise.bodyPart.toLowerCase().includes(search);
+          exercise.bodyPart.toLowerCase().includes(search)
+        );
       });
       setSearch("");
       setExercises(searchedExercises);
@@ -37,7 +39,7 @@ function SearchExcercise() {
   };
 
   return (
-    <div className="container mx-auto text-center p-8">
+    <div className="container mx-auto text-center p-8 mt-4">
       <h2 className="text-4xl font-semibold pb-8">
         Awesome Exercises you should know
       </h2>
@@ -68,7 +70,11 @@ function SearchExcercise() {
         </button>
       </div>
       <div>
-        <HorizontalScrollBar data={bodyParts} />
+        <HorizontalScrollBar
+          data={bodyParts}
+          bodyPart={bodyPart}
+          setBodyPart={setBodyPart}
+        />
       </div>
     </div>
   );
