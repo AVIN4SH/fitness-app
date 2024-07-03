@@ -10,5 +10,5 @@
   <li>YouTube video thumbnails and links</li>
   <li>Similar exercises targeting the same muscle group and using the same equipment</li>
 </ul>
-<h2>🟢 Live at:  </h2>
+<h2>🟢 Live at: https://fitness-app-react01.netlify.app/ </h2>
 # MONTHLY API LIMIT REACHED
