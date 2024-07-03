@@ -6,6 +6,7 @@ function SearchExcercise({ setExercises, bodyPart, setBodyPart }) {
   const [search, setSearch] = useState("");
 
   const [bodyParts, setBodyParts] = useState([]);
+  const isBodyPart = true;
 
   const URL = "https://exercisedb.p.rapidapi.com";
   const EXERCISEPATH = "/exercises?limit=1000";
@@ -72,6 +73,7 @@ function SearchExcercise({ setExercises, bodyPart, setBodyPart }) {
       <div>
         <HorizontalScrollBar
           data={bodyParts}
+          isBodyPart={isBodyPart}
           bodyPart={bodyPart}
           setBodyPart={setBodyPart}
         />

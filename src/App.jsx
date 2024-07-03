@@ -3,6 +3,7 @@ import Home from "./components/Home";
 import Exercise from "./components/Excercise";
 import Footer from "./components/Footer";
 import { Route, Routes } from "react-router-dom";
+import ExerciseDetails from "./components/ExerciseDetails";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/exercise" element={<Exercise />} />
+        <Route path="/exercise/:id" element={<ExerciseDetails />} />
       </Routes>
       <Footer />
     </>

@@ -1,4 +1,5 @@
 import React from "react";
+import TargetImage from "../assets/icons/target.png";
 
 function BodyPartCard({ item, setBodyPart, bodyPart }) {
   return (
@@ -16,8 +17,10 @@ function BodyPartCard({ item, setBodyPart, bodyPart }) {
       <div className="stats">
         <div className="stat place-items-center">
           <div className="stat-title">{item}</div>
-          <div className="stat-value">31K</div>
-          <div className="stat-desc">From January 1st to February 1st</div>
+
+          <button className="bg-[#fff2db] rounded-full p-3">
+            <img src={TargetImage} alt={bodyPart} className="" />
+          </button>
         </div>
       </div>
     </div>

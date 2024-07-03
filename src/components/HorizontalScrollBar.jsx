@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import BodyPartCard from "./BodyPartCard";
+import ExerciseCard from "./ExerciseCard";
 
-function HorizontalScrollBar({ data, bodyPart, setBodyPart }) {
+function HorizontalScrollBar({ data, bodyPart, setBodyPart, isBodyPart }) {
   const scrollContainerRef = useRef(null);
 
   const scrollLeft = () => {
@@ -39,11 +40,15 @@ function HorizontalScrollBar({ data, bodyPart, setBodyPart }) {
             title={item}
             className="flex-shrink-0 w-full sm:w-auto"
           >
-            <BodyPartCard
-              item={item}
-              bodyPart={bodyPart}
-              setBodyPart={setBodyPart}
-            />
+            {isBodyPart ? (
+              <BodyPartCard
+                item={item}
+                bodyPart={bodyPart}
+                setBodyPart={setBodyPart}
+              />
+            ) : (
+              <ExerciseCard exercise={item} />
+            )}
           </div>
         ))}
       </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ExerciseCard from "./ExerciseCard";
 import Pagination from "./Pagination";
 import { fetchData, exerciseOptions } from "../utils/fetchData";
+import Loader from "./Loader";
 
 function Exercise({ exercises, setExercises, bodyPart }) {
   const URL = "https://exercisedb.p.rapidapi.com";
@@ -11,10 +12,11 @@ function Exercise({ exercises, setExercises, bodyPart }) {
   const exercisesPerPage = 8;
   const indexOfLastExercise = currentPage * exercisesPerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
-  const currentExercises = exercises.slice(
-    indexOfFirstExercise,
-    indexOfLastExercise
-  );
+
+  const currentExercises =
+    exercises && exercises.length > 0
+      ? exercises.slice(indexOfFirstExercise, indexOfLastExercise)
+      : [];
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -62,7 +64,7 @@ function Exercise({ exercises, setExercises, bodyPart }) {
         </>
       ) : (
         <div className="text-3xl font-semibold text-center mb-4">
-          No Exercises Found
+          <Loader />
         </div>
       )}
     </div>

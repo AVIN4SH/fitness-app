@@ -45,7 +45,7 @@ function Header() {
             </li>
 
             <li>
-              <Link to={"/exercise"}>Exercise</Link>
+              <Link to={"/exercise/:id"}>Exercise</Link>
             </li>
           </ul>
         </div>
