@@ -1,3 +1,5 @@
+# THIS PROJECT IS NO LONGER MAINTAINED AS : MONTHLY API LIMIT REACHED & CHANGE IN API ENDPOINTS
+
 <h1>🚀 Created a Basic React App in React JS (with these key features):</h1>
 <h3>🏋️‍♂️ Fetches data from Exercise DB API and YouTube API</h3>
 <h3>🔍 Shows several body parts for targeted exercises</h3>
@@ -11,4 +13,3 @@
   <li>Similar exercises targeting the same muscle group and using the same equipment</li>
 </ul>
 <h2>🟢 Live at: https://fitness-app-react01.netlify.app/ </h2>
-# MONTHLY API LIMIT REACHED
